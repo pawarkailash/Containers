@@ -1,0 +1,34 @@
+#include <iostream>     // std::cout
+#include <algorithm>    // std::copy
+#include <vector>       // std::vector
+
+void showVector(const std::vector<int> &myvector)
+{
+  std::cout << "Vector contains:";
+  for (std::vector<int>::const_iterator it = myvector.begin(); it!=myvector.end(); ++it)
+    std::cout << ' ' << *it;
+  std::cout << '\n';
+}
+
+
+int main () {
+  int myints[]={10,20,30,40,50,60,70};
+  std::vector<int> myvector(10);
+  std::vector<int>::iterator it;
+
+  /* Initialize vector with 0 */
+  myvector.assign(10,0);
+  showVector(myvector);
+
+  /* Copy an array into, part of vector. Note that, while copying into
+   * vector, its being copied at some desired location */
+  it = myvector.begin()+3;
+  std::copy ( myints, myints+7, it);
+
+  std::cout << "myvector contains:";
+  for (std::vector<int>::iterator it = myvector.begin(); it!=myvector.end(); ++it)
+    std::cout << ' ' << *it;
+  std::cout << '\n';
+
+  return 0;
+}
